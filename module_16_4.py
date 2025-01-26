@@ -21,9 +21,10 @@ async def get_users() -> List[User]:
 @app.post('/user/{username}/{age}')
 async def new_user(user: User, username: Annotated[str, Path(description="Enter username")],
                    age: Annotated[int, Path(description="Enter age")]) -> str:
-    new_user_id = len(users) + 1 if users else 1
+    new_user_id = users[len(users)-1].id+1 if users else 1
     new_user = User(id=new_user_id, username=username, age=age)
     users.append(new_user)
+    print (user)
     return f'User {new_user_id} is registered'
 
 
