@@ -64,4 +64,4 @@ async def delete_user(request: Request, user_id: int):
             del users[i]
             return templates.TemplateResponse('users.html', {'request': request, 'users': users})
     raise HTTPException(status_code=404, detail='User not found')
-# python -m uvicorn module_16_5:app
+
